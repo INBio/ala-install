@@ -1,7 +1,7 @@
 - include: ../../common/tasks/setfacts.yml
 
-- name: disable swap
-  shell: "sudo swapoff --all"
+#- name: disable swap
+#  shell: "sudo swapoff --all"
 
 - name: copy transient files to tmp (schemas etc)
   copy: src={{item}} dest=/tmp
