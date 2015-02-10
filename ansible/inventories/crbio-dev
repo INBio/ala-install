@@ -1,24 +1,23 @@
-# An inventory for the deployment of the ALA demo for the UK.
-
 [ala-demo]
 172.16.16.86
 
 [ala-demo:vars]
-is_vagrant=false
+is_vagrant=true
+local_repo_dir = ~/.ala
 data_dir=/data
 
-demo_hostname = 172.16.16.86
+demo_hostname = 172.16.16.86 
 
 ####################### Biocache #######################
 
 biocache_db_host = localhost
 cassandra_listen_host = localhost
-biocache_service_hostname = 172.16.16.86 
+biocache_service_hostname = 172.16.16.86
 biocache_service_url = http://172.16.16.86/biocache-service
 biocache_service_base_url = http://172.16.16.86
 biocache_service_context_path = /biocache-service
 logging_enabled=true
-default_country=United Kingdom
+default_country=Australia
 
 ####################### Hub #######################
 
@@ -26,11 +25,12 @@ biocache_hub_hostname = 172.16.16.86
 biocache_hub_url = http://172.16.16.86/generic-hub
 biocache_hub_base_url = http://172.16.16.86
 biocache_hub_context_path = /generic-hub
+userdetails_url=https://auth.ala.org.au/userdetails/userDetails
 
-org_url=http://www.nbn.org.uk/
+org_url=http://www.csiro.au
 
-orgNameLong= UK occurrence portal
-orgNameShort=UK
+orgNameLong= Bla
+orgNameShort=bla
 
 explore_your_area_lat = 54.00366
 explore_your_area_lng = -2.547855
@@ -51,8 +51,8 @@ collectory_db_host = localhost
 collectory_db_user = collectory
 collectory_db_password = password
 
-orgNameLong = UK demo
-orgNameShort = UK demo
+orgNameLong = Crbio
+orgNameShort = Crbio
 
 # CAS
 uri_filter_pattern = /dummy
@@ -72,9 +72,9 @@ collections_map_lon = -2.547855
 collections_map_zoom = 5
 
 # Project name
-orgNameShort = UK demo
-orgNameLong = UK demo
-region = United Kingdom
+orgNameShort = Crbio-dev 
+orgNameLong = Crbio-dev
+region = Costa Rica
 
 # EML config
 eml_delivery_point = Smith Street
@@ -119,3 +119,7 @@ logger_db_name = logger
 logger_db_username = logger_user
 logger_db_password = logger_user
 logger_db_hostname = localhost
+
+############### Auth Server #########
+auth_base_url=https://auth.ala.org.au
+auth_cas_url=https://auth.ala.org.au/cas
