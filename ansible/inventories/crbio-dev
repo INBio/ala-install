@@ -1,6 +1,9 @@
 [ala-demo]
 172.16.16.86
 
+[collectory]
+172.16.16.86
+
 [ala-demo:vars]
 is_vagrant=true
 local_repo_dir = ~/.ala
@@ -41,7 +44,6 @@ map_default_longitude = -2.547855
 map_default_zoom = 5
 
 ####################### Collectory #######################
-
 collectory_hostname = 172.16.16.86
 collectory_url = http://172.16.16.86/collectory
 collectory_base_url = http://172.16.16.86
@@ -50,6 +52,7 @@ collectory_db_host_address = localhost
 collectory_db_host = localhost
 collectory_db_user = collectory
 collectory_db_password = password
+collectory_app=generic-collectory
 
 orgNameLong = Crbio
 orgNameShort = Crbio
