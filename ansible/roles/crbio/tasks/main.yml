@@ -1,5 +1,10 @@
+---
+- name: setting facts
+  set_fact:
+    tomcat: tomcat7
+    tomcat_user: tomcat7
 
-# Copy biocache-hub spanish translation
-- copy: src=files/i18n/es-ES/biocache-hub/messages.properties dest=/var/lib/{{tomcat}}/webapps/{{biocache_hub}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
-notify:
-    - restart tomcat
+- name: Copy biocache-hub spanish translation
+  copy: src=i18n/es-ES/biocache-hub/messages.properties dest=/var/lib/{{tomcat}}/webapps/{{biocache_hub}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
+  notify:
+   - restart tomcat

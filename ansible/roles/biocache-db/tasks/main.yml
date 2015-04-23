@@ -1,9 +1,9 @@
 - include: ../../common/tasks/setfacts.yml
 
-- name: disable swap
-  shell: "sudo swapoff --all"
-  tags:
-    - biocache_db
+#- name: disable swap
+#  shell: "sudo swapoff --all"
+#  tags:
+#    - biocache_db
 
 - name: copy transient files to tmp (schemas etc)
   copy: src={{item}} dest=/tmp
