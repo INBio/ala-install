@@ -35,12 +35,12 @@ org_url=http://www.csiro.au
 orgNameLong= Bla
 orgNameShort=bla
 
-explore_your_area_lat = 54.00366
-explore_your_area_lng = -2.547855
-explore_your_area_location=Edinburgh
+explore_your_area_lat = 10.0029963
+explore_your_area_lng = -84.1518919
+explore_your_area_location=Costa Rica
 
-map_default_latitude = 54.00366
-map_default_longitude = -2.547855
+map_default_latitude = 10.0029963
+map_default_longitude = -84.1518919
 map_default_zoom = 5
 
 ####################### Collectory #######################
@@ -70,8 +70,8 @@ api_key= to_be_added
 skin = generic
 
 # Map config
-collections_map_lat = 54.00366
-collections_map_lon = -2.547855
+collections_map_lat = 10.0029963
+collections_map_lon = -84.1518919
 collections_map_zoom = 5
 
 # Project name
