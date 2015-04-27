@@ -126,3 +126,8 @@ logger_db_hostname = localhost
 ############### Auth Server #########
 auth_base_url=https://auth.ala.org.au
 auth_cas_url=https://auth.ala.org.au/cas
+
+bie_base_url = 
+bie_search_path =
+biocache_query_context =
+club_role_for_hub =
