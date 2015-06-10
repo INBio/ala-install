@@ -75,8 +75,8 @@ collections_map_lon = -84.1518919
 collections_map_zoom = 5
 
 # Project name
-orgNameShort = Crbio-dev 
-orgNameLong = Crbio-dev
+orgNameShort = Crbio 
+orgNameLong = Crbio
 region = Costa Rica
 
 # EML config

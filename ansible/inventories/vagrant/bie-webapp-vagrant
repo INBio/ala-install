@@ -1,15 +1,15 @@
 [bie-webapp]
-vagrant1
+10.1.1.2
 
 [bie-webapp:vars]
 is_vagrant=true
 local_repo_dir=~/.ala
 data_dir=/data
 
-bie_webapp_hostname=vagrant1.ala.org.au
+bie_webapp_hostname=10.1.1.2
 bie_webapp_context_path=/bie-webapp2
-bie_webapp_base_url=http://vagrant1.ala.org.au
-bie_webapp_url=http://vagrant1.ala.org.au/bie-webapp2
+bie_webapp_base_url=http://10.1.1.2
+bie_webapp_url=http://10.1.1.2/bie-webapp2
 
 biocache_base_url=http://vagrant1.ala.org.au/biocache
 biocache_ws_url=http://vagrant1.ala.org.au/biocache/ws

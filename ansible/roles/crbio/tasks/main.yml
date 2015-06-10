@@ -8,3 +8,8 @@
   copy: src=i18n/es-ES/biocache-hub/messages.properties dest=/var/lib/{{tomcat}}/webapps/{{biocache_hub}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
   notify:
    - restart tomcat
+
+- name: Copy biocache-service spanish translation
+  copy: src=i18n/es-ES/biocache-service/messages.properties dest=/var/lib/{{tomcat}}/webapps{{biocache_service_context_path}}/WEB-INF/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
+  notify:
+   - restart tomcat
