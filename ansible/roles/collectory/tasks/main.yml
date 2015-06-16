@@ -1,6 +1,7 @@
 - include: ../../common/tasks/setfacts.yml
   tags:
     - collectory
+    - webapps
 
 #
 # Database configuration
@@ -9,7 +10,6 @@
   copy: src={{item}} dest=/tmp
   with_items:
     - collectory-sequences.sql
-    - collectory-schema.sql
   tags:
     - db
     - collectory
@@ -21,7 +21,7 @@
     - collectory
 
 - name: create collectory DB
-  mysql_db: name=collectory state=present
+  mysql_db: name=collectory state=present encoding=utf8
   register: dbschema
   tags:
     - db
@@ -38,7 +38,6 @@
   mysql_db: name=collectory state=import target={{item}}
   with_items:
     - /tmp/collectory-sequences.sql
-    - /tmp/collectory-schema.sql
   when: dbschema.changed
   tags:
     - db
@@ -51,15 +50,15 @@
 - name: ensure target directories exist [data subdirectories etc.]
   file: path={{item}} state=directory owner={{tomcat_user}} group={{tomcat_user}}
   with_items:
-    - "{{data_dir}}/{{ collectory_app }}"
-    - "{{data_dir}}/{{ collectory_app }}/upload/tmp"
-    - "{{data_dir}}/{{ collectory_app }}/taxa/data"
+    - "{{ collectory_data_dir }}"
+    - "{{ collectory_data_dir }}/upload/tmp"
+    - "{{ collectory_data_dir }}/taxa/data"
   tags:
     - properties
     - collectory
 
-- name: copy all data assets [SOLR, lucene etc]
-  copy: src={{item}} dest={{data_dir}}/{{ collectory_app }} owner={{tomcat_user}} group={{tomcat_user}}
+- name: copy all data assets
+  copy: src={{item}} dest={{ collectory_data_dir }} owner={{tomcat_user}} group={{tomcat_user}}
   with_items:
     - data/config
     - data/data
@@ -68,7 +67,7 @@
     - collectory
 
 - name: copy all template configs
-  template: src={{item}} dest={{data_dir}}/{{ collectory_app }}/config/{{ collectory_app }}-config.properties
+  template: src={{item}} dest={{ collectory_data_dir }}/config/{{ collectory_app | default('generic-collectory') }}-config.properties
   with_items:
     - config/collectory-config.properties
   tags:
@@ -76,7 +75,7 @@
     - collectory
 
 - name: set data ownership [all data is owned by tomcat]
-  file: path={{data_dir}}/{{ collectory_app }} owner={{tomcat_user}}  group={{tomcat_user}}  recurse=true
+  file: path={{ collectory_data_dir }} owner={{ tomcat_user }}  group={{ tomcat_user }}  recurse=true
   notify: 
     - restart tomcat  
   tags:
@@ -91,9 +90,11 @@
     - deploy
     - apache_vhost
     - collectory
+    - webapps
 
 - include: ../../tomcat_deploy/tasks/main.yml war_url='{{ collectory_war_url }}' context_path='{{ collectory_context_path }}' hostname='{{ collectory_hostname }}'
   tags:
     - deploy
     - tomcat_vhost
     - collectory
+    - webapps

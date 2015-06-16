@@ -3,7 +3,9 @@
     - java
     - common
     - mongodb
+    - wkhtmltopdf
     - tomcat
     - apache
+    - nameindex
     - profile-service
     - profile-hub

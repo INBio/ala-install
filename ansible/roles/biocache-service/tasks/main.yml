@@ -1,30 +1,41 @@
 - include: ../../common/tasks/setfacts.yml
+  tags:
+    - biocache-service
+    - webapps
 
 - include: ../../apache_vhost/tasks/main.yml context_path='{{ biocache_service_context_path }}' hostname='{{ biocache_service_hostname }}' 
   tags:
     - biocache-service
     - deploy
     - apache_vhost
+    - webapps
 
 - include: ../../tomcat_deploy/tasks/main.yml war_url='{{ biocache_service_war_path }}' context_path='{{ biocache_service_context_path }}' hostname='{{ biocache_service_hostname }}'
   tags:
     - biocache-service
     - deploy
     - tomcat_vhost
+    - webapps
 
 - name: ensure tomcat context directory exists
   file: path=/usr/share/{{tomcat}}/conf/Catalina/localhost/ state=directory owner={{tomcat_user}} group={{tomcat_user}}
+  tags:
+    - biocache-service  
   notify:
     - restart tomcat
 
 - name: ensure application data directory exists
   file: path={{data_dir}}/biocache state=directory owner={{tomcat_user}}  group={{tomcat_user}}
+  tags:
+    - biocache-service  
 
 - name: copy all data assets
   copy: src=data/config dest={{data_dir}}/biocache owner={{tomcat_user}}  group={{tomcat_user}}
+  tags:
+    - biocache-service  
 
 - name: ensure target directories exist [data subdirectories etc.
-  file: path={{item}} state=directory owner={{tomcat_user}}  group={{tomcat_user}}
+  file: path={{item}} state=directory owner={{tomcat_user}}  group={{tomcat_user}} mode=0774
   with_items:
     - "{{data_dir}}/ala/layers/ready/shape"
     - "{{data_dir}}/biocache-load"
@@ -36,13 +47,10 @@
     - "{{data_dir}}/offline/exports"    
     - "{{data_dir}}/tool"        
 
-- name: copy all template configs
-  template: src={{item}} dest={{data_dir}}/biocache/{{item}} owner={{tomcat_user}}  group={{tomcat_user}}  mode=0644
-  with_items:
-    - config/biocache-config.properties
-
 - name: copy biocache logging config
   copy: src=config/facets.json dest={{data_dir}}/biocache/config/facets.json
+  tags:
+    - biocache-service  
 
 - name: set data ownership [all data is owned by tomcat]
   file: path={{data_dir}}/{{item}} owner={{tomcat_user}} group={{tomcat_user}} recurse=true
@@ -57,8 +65,12 @@
     - tmp    
     - offline    
     - tool       
+  tags:
+    - biocache-service    
 
 - name: set permissions for biocache-load [TODO - more restrictive permissions]
   file: path={{data_dir}}/biocache-load mode=777
+  tags:
+    - biocache-service  
   notify:
     - restart tomcat

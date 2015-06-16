@@ -29,7 +29,7 @@ userdetails_url=https://auth.ala.org.au/userdetails/userDetails
 
 org_url=http://www.csiro.au
 
-orgNameLong= Bla
+orgNameLong=Bla
 orgNameShort=bla
 
 explore_your_area_lat = 54.00366
@@ -42,6 +42,7 @@ map_default_zoom = 5
 
 ####################### Collectory #######################
 
+collectory_app = generic-collectory
 collectory_hostname = demo.vagrant1.ala.org.au
 collectory_url = http://demo.vagrant1.ala.org.au/collectory
 collectory_base_url = http://demo.vagrant1.ala.org.au
@@ -89,7 +90,7 @@ disable_alerts = true
 disable_logger = false
 
 # Whether to check API keys for incoming write requests
-api_key_check_enabled = true
+api_key_check_enabled = false
 
 # GBIF base URL for webservices
 gbifApiUrl=http://api.gbif.org/v1
@@ -114,7 +115,7 @@ sandbox_context_path = /sandbox
 logger_hostname = demo.vagrant1.ala.org.au
 logger_url = http://demo.vagrant1.ala.org.au/logger-service
 logger_base_url = http://demo.vagrant1.ala.org.au
-logger_context_path = /logger-service 
+logger_context_path = /logger-service
 logger_db_name = logger
 logger_db_username = logger_user
 logger_db_password = logger_user
@@ -123,3 +124,9 @@ logger_db_hostname = localhost
 ############### Auth Server #########
 auth_base_url=https://auth.ala.org.au
 auth_cas_url=https://auth.ala.org.au/cas
+
+####### When near the GBIF building (e.g. in Europe) the GBIF nexus will likely be fastest #########
+use_gbif_nexus=true
+
+####### Disable SDS checks for the demo
+sds_enabled=false

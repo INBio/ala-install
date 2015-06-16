@@ -1,4 +1,4 @@
-version: "1.0"
+version: "{{ sandbox_version | default('LATEST') }}"
 artifactId: "sandbox"
 classifier: ''
 packaging: "war"
