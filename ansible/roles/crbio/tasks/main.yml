@@ -4,6 +4,11 @@
     tomcat: tomcat7
     tomcat_user: tomcat7
 
+- name: Fix apache 000-default
+  command: a2dissite 000-default
+  notify:
+      - reload apache2
+
 - name: Copy biocache-hub spanish translation
   copy: src=i18n/es-ES/biocache-hub/messages.properties dest=/var/lib/{{tomcat}}/webapps/{{biocache_hub}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
   notify:
