@@ -44,7 +44,9 @@ map_default_longitude = -84.1518919
 map_default_zoom = 5
 
 ####################### Collectory #######################
-collectory_hostname = 172.16.16.86
+
+collectory_app = generic-collectory
+collectory_hostname = 172.16.16.86 
 collectory_url = http://172.16.16.86/collectory
 collectory_base_url = http://172.16.16.86
 collectory_context_path = /collectory
@@ -52,7 +54,6 @@ collectory_db_host_address = localhost
 collectory_db_host = localhost
 collectory_db_user = collectory
 collectory_db_password = password
-collectory_app=generic-collectory
 
 orgNameLong = Crbio
 orgNameShort = Crbio
@@ -131,3 +132,4 @@ bie_base_url =
 bie_search_path =
 biocache_query_context =
 club_role_for_hub =
+
