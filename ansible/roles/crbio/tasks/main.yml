@@ -18,3 +18,8 @@
   copy: src=i18n/es-ES/biocache-service/messages.properties dest=/var/lib/{{tomcat}}/webapps{{biocache_service_context_path}}/WEB-INF/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
   notify:
    - restart tomcat
+
+- name: Copy collectory spanish translation
+copy: src=i18n/es-ES/collectory/messages.properties dest=/var/lib/{{tomcat}}/webapps{{collectory_context_path}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
+  notify:
+   - restart tomcat
