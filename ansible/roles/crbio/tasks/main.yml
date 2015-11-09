@@ -20,6 +20,6 @@
    - restart tomcat
 
 - name: Copy collectory spanish translation
-copy: src=i18n/es-ES/collectory/messages.properties dest=/var/lib/{{tomcat}}/webapps{{collectory_context_path}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
+  copy: src=i18n/es-ES/collectory/messages.properties dest=/var/lib/{{tomcat}}/webapps{{collectory_context_path}}/WEB-INF/grails-app/i18n/messages_es.properties owner={{tomcat_user}} group={{tomcat_user}}
   notify:
    - restart tomcat
