@@ -1,3 +1,7 @@
+# CRBio Installation Scripts
+This project contains [Ansible](http://www.ansible.com/) playbooks for setting up CRBio components on Ubuntu 14 machines. It is based on ALA installation scripts.
+
+
 # ALA Installation Scripts
 This project contains [Ansible](http://www.ansible.com/) playbooks for setting up ALA components on Ubuntu 14 machines.
 This project includes a playbook for setting up the [ALA demo ](http://ala-demo.gbif.org).
